@@ -1,6 +1,10 @@
 # Library Name
 
-Library or sketch description
+This is a template repository. Use this as a starting point for new projects. When creating a new repo, choose "Template-Repo" from the Repository template menu on GitHub.
+
+Update this README.md file with details specific to your new repo.
+
+This first section should give a general description of the repo.
 
 ## Usage
 
