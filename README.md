@@ -14,6 +14,8 @@ Root directory:
   Lists the licensing terms for the repo. The default text uses the [MIT license][100], but any other license text appropriate to the repo can be used. Keep this file regardless of the type of project.
 - `README.md`  
   This file. A description of the repo/library/sketch. Keep this file regardless of the type of project.
+- `.gitignore`  
+  Used to keep git from tracking files that are related to your local development environment but not an integral part of the project implementation. My development environment creates `.DS_Store` and `.vscode` files, which I do not want tracked by git. Your development environment may have others. Github has a large [collection][3] of template `.gitignore` files available.
 
 Uder the root directory are the following sub-directories:
 
@@ -104,7 +106,8 @@ The software and other files in this repository are released under what is commo
 
 [1]: https://arduino.github.io/arduino-cli/0.20/library-specification/
 [2]: https://daringfireball.net/projects/markdown/
-[3]: https://another.url.com
+[3]: https://github.com/github/gitignore
+[4]: https://another.url.com
 [100]: https://choosealicense.com/licenses/mit/
 [101]: ./LICENSE.txt
 [200]: https://github.com/Andy4495/Template-Repo
