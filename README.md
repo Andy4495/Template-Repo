@@ -17,7 +17,7 @@ Root directory:
 - `.gitignore`  
   Used to keep git from tracking files that are related to your local development environment but not an integral part of the project implementation. My development environment creates `.DS_Store` and `.vscode` files, which I do not want tracked by git. Your development environment may have others. Github has a large [collection][3] of template `.gitignore` files available.
 
-Uder the root directory are the following sub-directories:
+Under the root directory are the following sub-directories:
 
 - `src`  
   Contains all the library source and header files.
@@ -67,8 +67,9 @@ How to use the library or sketch. If this is a library, include the following no
 4. Explain useful methods:
 
     ```C++
-    exampleMethod1();
-    exampleMethod2();
+    method1(int param1);   // Gets the data, etc ...
+    method2(char param2);  // Process the data, etc ...
+    method3();             // Formats the data, etc ...
     ```
 
 5. See the library source code and example sketches for other available methods and usage.
@@ -83,7 +84,7 @@ Describe the example sketch
 
 ## External Libraries
 
-List any external libraries necessary for this library to function.
+List any external libraries (libraries not included in the default Arduino installation) that this library is dependent on. Include URLs.
 
 ## Implementation Details
 
@@ -96,6 +97,8 @@ Also, this section can be used to remind you of why you made certain design deci
 Explain any other related files, such as hardware, tools, or documentation in the extras folder.
 
 ## References
+
+Summary of reference documents and web pages that are relevant to using or understanding this repo. Also include any related hardware spec sheets.
 
 - Reference1 [reference text][1]
 - Reference2 [reference text][2]
