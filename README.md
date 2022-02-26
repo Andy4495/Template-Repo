@@ -107,7 +107,7 @@ Summary of reference documents and web pages that are relevant to using or under
 
 The software and other files in this repository are released under what is commonly called the [MIT License][100]. See the file [`LICENSE.txt`][101] in this repository.
 
-[1]: https://arduino.github.io/arduino-cli/0.20/library-specification/
+[1]: https://arduino.github.io/arduino-cli/latest/library-specification/
 [2]: https://daringfireball.net/projects/markdown/
 [3]: https://github.com/github/gitignore
 [4]: https://another.url.com
