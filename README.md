@@ -1,5 +1,7 @@
 # Repository or Library Name
 
+[![Check Markdown Links](https://github.com/Andy4495/Template-Repo/actions/workflows/CheckMarkdownLinks.yml/badge.svg)](https://github.com/Andy4495/Template-Repo/actions/workflows/CheckMarkdownLinks.yml)
+
 This is a template repository. Use this as a starting point for new projects. To create a new repo on GitHub using this template, select "Template-Repo" from the Repository template menu in the New Repository page, or click on the "Use this template" button at the top of this page.
 
 The directory structure of this repo follows the [Arduino Library Specification][1]. If this repo is for an individual sketch or non-library type of project, then many of the files and folders are unnecessary and can be deleted.
@@ -25,6 +27,8 @@ Under the root directory are the following sub-directories:
   Contains example sketches for the library. Note that each example sketch needs to be in its own subfolder, with the subfolder having the same name as the sketch (without the `.ino` extension).
 - `extras`  
   Can be used to store other information relevant to the repo, such as documentation, hardware, or related tools information. This directory is optional and is ignored by the Arduino development IDE and tools.
+- `.github`
+  Contains GitHub workflow files. The `CheckMarkdownLinks` workflow checks for broken links in Markdown files in your repository. Also note that there is a badge related to the status of this check embedded at the top of this README file.
 
 Each of the subdirectories contains a file named `.gitkeep`. This file is used to force git into tracking empty folders. The file can be removed once another file is created in the directory.
 
