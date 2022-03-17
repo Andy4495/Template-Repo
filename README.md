@@ -30,7 +30,7 @@ Under the root directory are the following sub-directories:
 - `.github`
   Contains GitHub workflow files. The `CheckMarkdownLinks` workflow checks for broken links in Markdown files in your repository. Also note that there is a badge related to the status of this check embedded at the top of this README file.
 
-Each of the subdirectories contains a file named `.gitkeep`. This file is used to force git into tracking empty folders. The file can be removed once another file is created in the directory.
+Each of the empty subdirectories contains a file named `.gitkeep`. This file is used to force git into tracking empty folders. The file can be removed once another file is created in the directory.
 
 ## How to update this README
 
