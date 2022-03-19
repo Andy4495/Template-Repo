@@ -1,4 +1,4 @@
-# Repository or Library Name
+# Template Repository
 
 [![Check Markdown Links](https://github.com/Andy4495/Template-Repo/actions/workflows/CheckMarkdownLinks.yml/badge.svg)](https://github.com/Andy4495/Template-Repo/actions/workflows/CheckMarkdownLinks.yml)
 
@@ -28,7 +28,28 @@ Under the root directory are the following sub-directories:
 - `extras`  
   Can be used to store other information relevant to the repo, such as documentation, hardware, or related tools information. This directory is optional and is ignored by the Arduino development IDE and tools.
 - `.github`
-  Contains GitHub workflow files. The `CheckMarkdownLinks` workflow checks for broken links in Markdown files in your repository. Also note that there is a badge related to the status of this check embedded at the top of this README file.
+  Contains GitHub workflow files:
+  
+  - `CheckMarkdownLinks` checks for [broken links in Markdown files][7] in your repository. Also note that there is a badge related to the status of this check embedded at the top of this README file.
+
+  - `arduino-compile-sketches` compiles any sketches (files ending in `.ino`) in the repository and reports one whether they compile successfuly or not. See the Arduino [blog][5] and the related [action][6] in the GitHub marketplace for more info.
+
+    - If the sketches are dependent on external libraries, then entries similar to the following need to be added to the workflow file under the `libraries:` definition:
+
+    ```yaml
+                - source-url: https://github.com/Andy4495/SWI2C.git
+    ```
+
+    - To compile a non-AVR platform (e.g. MSP430), then the workflow needs to add instructions to install additional platforms. Note the lack of a dash (`-`) before `version:` and `source-url:`.
+
+    ```yaml
+      with:
+          fqbn: 'energia:msp430:MSP-EXP430G2553LP'
+          platforms: |
+            - name: 'energia:msp430'
+              version: latest
+              source-url: 'http://energia.nu/packages/package_energia_index.json'
+    ```
 
 Each of the empty subdirectories contains a file named `.gitkeep`. This file is used to force git into tracking empty folders. The file can be removed once another file is created in the directory.
 
@@ -115,9 +136,11 @@ The software and other files in this repository are released under what is commo
 [2]: https://daringfireball.net/projects/markdown/
 [3]: https://github.com/github/gitignore
 [4]: https://another.url.com
+[5]: https://blog.arduino.cc/2021/04/09/test-your-arduino-projects-with-github-actions/
+[6]: https://github.com/marketplace/actions/compile-arduino-sketches
+[7]: https://github.com/marketplace/actions/markdown-link-check
 [100]: https://choosealicense.com/licenses/mit/
 [101]: ./LICENSE.txt
 [200]: https://github.com/Andy4495/Template-Repo
 
 [//]: # (This is a way to hack a comment in Markdown. This will not be displayed when rendered.)
-
