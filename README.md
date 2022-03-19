@@ -19,7 +19,7 @@ Root directory:
 - `.gitignore`  
   Used to keep git from tracking files that are related to your local development environment but not an integral part of the project implementation. My development environment creates `.DS_Store` and `.vscode` files, which I do not want tracked by git. Your development environment may have others. Github has a large [collection][3] of template `.gitignore` files available.
 
-Under the root directory are the following sub-directories:
+Under the root directory are the following sub-directories. Each of the empty subdirectories contains a file named `.gitkeep`. This file is used to force git into tracking empty folders. The file can be removed once another file is created in the directory.
 
 - `src`  
   Contains all the library source and header files.
@@ -28,11 +28,11 @@ Under the root directory are the following sub-directories:
 - `extras`  
   Can be used to store other information relevant to the repo, such as documentation, hardware, or related tools information. This directory is optional and is ignored by the Arduino development IDE and tools.
 - `.github`
-  Contains GitHub workflow files:
+  Contains [GitHub workflow][8] files:
   
   - `CheckMarkdownLinks` checks for [broken links in Markdown files][7] in your repository. Also note that there is a badge related to the status of this check embedded at the top of this README file.
 
-  - `arduino-compile-sketches` compiles any sketches (files ending in `.ino`) in the repository and reports one whether they compile successfuly or not. See the Arduino [blog][5] and the related [action][6] in the GitHub marketplace for more info.
+  - `arduino-compile-sketches` compiles any sketches (files ending in `.ino`) in the repository and reports on whether they compile successfuly or not. See the Arduino [blog][5] and the related [action][6] in the GitHub marketplace for more info.
 
     - If the sketches are dependent on external libraries, then entries similar to the following need to be added to the workflow file under the `libraries:` definition:
 
@@ -50,8 +50,6 @@ Under the root directory are the following sub-directories:
               version: latest
               source-url: 'http://energia.nu/packages/package_energia_index.json'
     ```
-
-Each of the empty subdirectories contains a file named `.gitkeep`. This file is used to force git into tracking empty folders. The file can be removed once another file is created in the directory.
 
 ## How to update this README
 
@@ -139,6 +137,7 @@ The software and other files in this repository are released under what is commo
 [5]: https://blog.arduino.cc/2021/04/09/test-your-arduino-projects-with-github-actions/
 [6]: https://github.com/marketplace/actions/compile-arduino-sketches
 [7]: https://github.com/marketplace/actions/markdown-link-check
+[8]: https://docs.github.com/en/actions/using-workflows
 [100]: https://choosealicense.com/licenses/mit/
 [101]: ./LICENSE.txt
 [200]: https://github.com/Andy4495/Template-Repo
