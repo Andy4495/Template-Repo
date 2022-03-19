@@ -40,7 +40,7 @@ Under the root directory are the following sub-directories. Each of the empty su
                 - source-url: https://github.com/Andy4495/SWI2C.git
     ```
 
-    - To compile a non-AVR platform (e.g. MSP430), then the workflow needs to add instructions to install additional platforms. Note the lack of a dash (`-`) before `version:` and `source-url:`.
+    - To compile a non-AVR platform (e.g. MSP430), then the workflow needs to include instructions to install additional platforms. Note the lack of a dash (`-`) before `version:` and `source-url:`.
 
     ```yaml
       with:
