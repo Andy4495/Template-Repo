@@ -27,7 +27,7 @@ Under the root directory are the following sub-directories. Each of the empty su
   Contains example sketches for the library. Note that each example sketch needs to be in its own subfolder, with the subfolder having the same name as the sketch (without the `.ino` extension).
 - `extras`  
   Can be used to store other information relevant to the repo, such as documentation, hardware, or related tools information. This directory is optional and is ignored by the Arduino development IDE and tools.
-- `.github`
+- `.github`  
   Contains [GitHub workflow][8] files:
   
   - `CheckMarkdownLinks` checks for [broken links in Markdown files][7] in your repository. Also note that there is a badge related to the status of this check embedded at the top of this README file.
