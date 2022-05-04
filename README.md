@@ -137,6 +137,7 @@ The software and other files in this repository are released under what is commo
 [5]: https://blog.arduino.cc/2021/04/09/test-your-arduino-projects-with-github-actions/
 [6]: https://github.com/marketplace/actions/compile-arduino-sketches
 [7]: https://github.com/marketplace/actions/markdown-link-check
+<!-- markdown-link-check-disable-next-line -->
 [8]: https://docs.github.com/en/actions/using-workflows
 [100]: https://choosealicense.com/licenses/mit/
 [101]: ./LICENSE.txt
