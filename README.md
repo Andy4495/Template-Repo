@@ -28,7 +28,7 @@ Under the root directory are the following sub-directories. Each of the empty su
 - `extras`  
   Can be used to store other information relevant to the repo, such as documentation, hardware, or related tools information. This directory is optional and is ignored by the Arduino development IDE and tools.
 - `.github`  
-  Contains [GitHub workflow][8] files:
+  Contains sample [GitHub workflow][8] files. Update these as needed for your specific needs:
   
   - `CheckMarkdownLinks.yml` checks for [broken links in Markdown files][7] in your repository. Also note that there is a badge related to the status of this check embedded at the top of this README file.
 
@@ -38,7 +38,7 @@ Under the root directory are the following sub-directories. Each of the empty su
 
   - `arduino-compile-sketches.yml` compiles any sketches (files ending in `.ino`) in the repository and reports on whether they compile successfuly or not. See the Arduino [blog][5] and the related [action][6] in the GitHub marketplace for more info.
 
-  - `arduino-comple-sketches-MSP.yml` is the same as `arduino-compile-sketches.yml` with some added complexity. It specifies an external library, defines a different platform (msp430) and platform index file, and supports a workflow_dispatch event that can be used to externally trigger a build (e.g. when a library it depends on changes). Be sure to use only one `arduino-compile-sketches.yml` file -- tailor one of these examples to your needs and delete the other.
+  - `arduino-comple-sketches-MSP.yml` is the same as `arduino-compile-sketches.yml` with some added complexity. It specifies an external library, defines a different platform (msp430) and platform index file, and supports a workflow_dispatch event that can be used to externally trigger a build (e.g. when a library it depends on changes). **Be sure to use only one `arduino-compile-sketches.yml` file -- tailor one of these examples to your needs and delete the other.**
 
     - If the sketches are dependent on external libraries, then entries similar to the following need to be added to the workflow file under the `libraries:` definition:
 
