@@ -36,6 +36,8 @@ Under the root directory are the following sub-directories. Each of the empty su
 
   - `build-dependent-repos.yml` triggers builds on repositories dependent on this repo. This would typically be used for libraries that are used by other repos. If there are no repos dependent on this one, then delete this file.
 
+  - `arduino-lint.yml` runs the [Arduino Lint Action][9]. This action is most useful for libraries published to the [Arduino Library Manager][10], and is configured as such.
+
   - `arduino-compile-sketches.yml` compiles any sketches (files ending in `.ino`) in the repository and reports on whether they compile successfuly or not. See the Arduino [blog][5] and the related [action][6] in the GitHub marketplace for more info.
 
   - `arduino-comple-sketches-MSP.yml` is the same as `arduino-compile-sketches.yml` with some added complexity. It specifies an external library, defines a different platform (msp430) and platform index file, and supports a workflow_dispatch event that can be used to externally trigger a build (e.g. when a library it depends on changes). **Be sure to use only one `arduino-compile-sketches.yml` file -- tailor one of these examples to your needs and delete the other.**
@@ -143,6 +145,8 @@ The software and other files in this repository are released under what is commo
 [6]: https://github.com/marketplace/actions/compile-arduino-sketches
 [7]: https://github.com/marketplace/actions/markdown-link-check
 [8]: https://docs.github.com/en/actions/using-workflows
+[9]: https://github.com/marketplace/actions/arduino-arduino-lint-action
+[10]: https://github.com/arduino/library-registry/blob/main/FAQ.md#readme
 [100]: https://choosealicense.com/licenses/mit/
 [101]: ./LICENSE.txt
 [200]: https://github.com/Andy4495/Template-Repo
