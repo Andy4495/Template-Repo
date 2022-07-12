@@ -27,19 +27,16 @@ Under the root directory are the following sub-directories. Each of the empty su
   Contains example sketches for the library. Note that each example sketch needs to be in its own subfolder, with the subfolder having the same name as the sketch (without the `.ino` extension).
 - `extras`  
   Can be used to store other information relevant to the repo, such as documentation, hardware, or related tools information. This directory is optional and is ignored by the Arduino development IDE and tools.
-- `.github`  
-  Contains sample [GitHub workflow][8] files. Update these as needed for your specific needs:
+- `.github/workflows`  
+  Contains sample [GitHub workflow][8] action files. Update these as needed for your specific needs:
   
   - `CheckMarkdownLinks.yml` checks for [broken links in Markdown files][7] in your repository. Also note that there is a badge related to the status of this check embedded at the top of this README file.
-
   - `mlc_config.json` is a configuration file used by `CheckMarkdownLinks.yml`. In particular, this file defines HTTP status codes 429 (Too Many Requests), 403 (Forbidden), and 200 (OK) as valid "alive" status codes when checking URLs. Both 429 and 403 are often returned by the automated link check for valid URLs, and by defining them as "Alive" codes, you can cut down on false failures when running the Check Markdown Links action.
-
   - `build-dependent-repos.yml` triggers builds on repositories dependent on this repo. This would typically be used for libraries that are used by other repos. If there are no repos dependent on this one, then delete this file.
-
-  - `arduino-lint.yml` runs the [Arduino Lint Action][9]. This action is most useful for libraries published to the [Arduino Library Manager][10], and is configured as such.
-
+  - `arduino-lint.yml` runs the [Arduino Lint action][9]. This action is most useful for libraries published to the [Arduino Library Manager][10], and is configured as such.
+  - `markdownlint.yml` runs the [markdownlint-cli action][11]. It references the config file `markdownlintconfig.json`.
+  - `markdownlintconfig.json` is the config file for the `markdownlint.yml` action. This version is configured to disable the check for [MD013: Line Length][12]. MD013 is disabled by default in the [markdownlint extension][13] for Visual Studio Code, so I disable it here to make it consistent with my VSCode environment.
   - `arduino-compile-sketches.yml` compiles any sketches (files ending in `.ino`) in the repository and reports on whether they compile successfuly or not. See the Arduino [blog][5] and the related [action][6] in the GitHub marketplace for more info.
-
   - `arduino-comple-sketches-MSP.yml` is the same as `arduino-compile-sketches.yml` with some added complexity. It specifies an external library, defines a different platform (msp430) and platform index file, and supports a workflow_dispatch event that can be used to externally trigger a build (e.g. when a library it depends on changes). **Be sure to use only one `arduino-compile-sketches.yml` file -- tailor one of these examples to your needs and delete the other.**
 
     - If the sketches are dependent on external libraries, then entries similar to the following need to be added to the workflow file under the `libraries:` definition:
@@ -147,6 +144,9 @@ The software and other files in this repository are released under what is commo
 [8]: https://docs.github.com/en/actions/using-workflows
 [9]: https://github.com/marketplace/actions/arduino-arduino-lint-action
 [10]: https://github.com/arduino/library-registry/blob/main/FAQ.md#readme
+[11]: https://github.com/marketplace/actions/markdownlint-cli
+[12]: https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md013---line-length
+[13]: https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint
 [100]: https://choosealicense.com/licenses/mit/
 [101]: ./LICENSE.txt
 [200]: https://github.com/Andy4495/Template-Repo
