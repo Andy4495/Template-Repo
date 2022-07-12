@@ -145,7 +145,7 @@ The software and other files in this repository are released under what is commo
 [9]: https://github.com/marketplace/actions/arduino-arduino-lint-action
 [10]: https://github.com/arduino/library-registry/blob/main/FAQ.md#readme
 [11]: https://github.com/marketplace/actions/markdownlint-cli
-[12]: https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md013---line-length
+[12]: https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md013
 [13]: https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint
 [100]: https://choosealicense.com/licenses/mit/
 [101]: ./LICENSE.txt
