@@ -28,33 +28,37 @@ Under the root directory are the following sub-directories. Each of the empty su
 - `extras`  
   Can be used to store other information relevant to the repo, such as documentation, hardware, or related tools information. This directory is optional and is ignored by the Arduino development IDE and tools.
 - `.github/workflows`  
-  Contains sample [GitHub workflow][8] action files. Update these as needed for your specific needs:
+  Contains sample [GitHub workflow][8] action files. Update these for your specific needs:
   
-  - `CheckMarkdownLinks.yml` checks for [broken links in Markdown files][7] in your repository. Also note that there is a badge related to the status of this check embedded at the top of this README file.
-  - `mlc_config.json` is a configuration file used by `CheckMarkdownLinks.yml`. In particular, this file defines HTTP status codes 429 (Too Many Requests), 403 (Forbidden), and 200 (OK) as valid "alive" status codes when checking URLs. Both 429 and 403 are often returned by the automated link check for valid URLs, and by defining them as "Alive" codes, you can cut down on false failures when running the Check Markdown Links action.
-  - `build-dependent-repos.yml` triggers builds on repositories dependent on this repo. This would typically be used for libraries that are used by other repos. If there are no repos dependent on this one, then delete this file.
-  - `arduino-lint.yml` runs the [Arduino Lint action][9]. This action is most useful for libraries published to the [Arduino Library Manager][10], and is configured as such.
-  - `markdownlint.yml` runs the [markdownlint-cli action][11]. It references the config file `markdownlintconfig.json`.
-  - `markdownlintconfig.json` is the config file for the `markdownlint.yml` action. This version is configured to disable the check for [MD013: Line Length][12]. MD013 is disabled by default in the [markdownlint extension][13] for Visual Studio Code, so I disable it here to make it consistent with my VSCode environment.
-  - `arduino-compile-sketches.yml` compiles any sketches (files ending in `.ino`) in the repository and reports on whether they compile successfuly or not. See the Arduino [blog][5] and the related [action][6] in the GitHub marketplace for more info.
-  - `arduino-comple-sketches-MSP.yml` is the same as `arduino-compile-sketches.yml` with some added complexity. It specifies an external library, defines a different platform (msp430) and platform index file, and supports a workflow_dispatch event that can be used to externally trigger a build (e.g. when a library it depends on changes). **Be sure to use only one `arduino-compile-sketches.yml` file -- tailor one of these examples to your needs and delete the other.**
+  - `CheckMarkdownLinks.yml`: Checks for [broken links in Markdown files][7] in your repository. Also note that there is a badge related to the status of this check embedded at the top of this README file.
+  - `mlc_config.json`: Configuration file used by `CheckMarkdownLinks.yml`. In particular, this file defines HTTP status codes 429 (Too Many Requests), 403 (Forbidden), and 200 (OK) as valid "alive" status codes when checking URLs. Both 429 and 403 are often returned by the automated link check for valid URLs, and by defining them as "Alive" codes, you can cut down on false failures when running the Check Markdown Links action.
+  - `build-dependent-repos.yml`: Triggers builds on repositories dependent on this repo. This would typically be used for libraries that are used by other repos. If there are no repos dependent on this one, then delete this file.
+  - `arduino-lint.yml`: Runs the [Arduino Lint action][9]. This action is most useful for libraries published to the [Arduino Library Manager][10], and is configured as such.
+  - `markdownlint.yml`: Runs the [markdownlint-cli action][11]. It references the config file `markdownlintconfig.json`.
+  - `markdownlintconfig.json`: Config file for the `markdownlint.yml` action. This version is configured to disable the check for [MD013: Line Length][12]. MD013 is disabled by default in the [markdownlint extension][13] for Visual Studio Code, so I disable it here to make it consistent with my VSCode environment.
 
-    - If the sketches are dependent on external libraries, then entries similar to the following need to be added to the workflow file under the `libraries:` definition:
+    **There are several `arduino-compile-sketches` examples included. Be sure to use only one `arduino-compile-sketches` file -- tailor one of these examples to your needs and delete the others.**  
 
-    ```yaml
-                - source-url: https://github.com/Andy4495/SWI2C.git
-    ```
+    - `arduino-compile-sketches.yml`: Compiles any sketches (files ending in `.ino`) in the repository using the default avr:uno platform and reports on whether the sketches compile successfuly or not. See the Arduino [blog][5] and the related [action][6] in the GitHub marketplace for more info.
+    - `arduino-compile-sketches-MSP.yml`: Same as `arduino-compile-sketches.yml` with some added complexity. It specifies an external library, defines a different platform (msp430) and platform index file, and supports a workflow_dispatch event that can be used to externally trigger a build (e.g. when a library it depends on changes).
+    - `arduino-compile-sketches-matrix-build-avr-msp.yml`: Uses a [matrix strategy][14] to trigger both avr and msp builds on the sketches in the repository.
+    - Tips on updating the compile-sketches actions:
+      - If the sketches are dependent on external libraries, then entries similar to the following need to be added to the workflow file under the `libraries:` definition:
 
-    - To compile a non-AVR platform (e.g. MSP430), then the workflow needs to include instructions to install additional platforms. Note the lack of a dash (`-`) before `version:` and `source-url:`.
+        ```yaml
+        - source-url: https://github.com/Andy4495/SWI2C.git
+        ```
 
-    ```yaml
-      with:
-          fqbn: 'energia:msp430:MSP-EXP430G2553LP'
-          platforms: |
-            - name: 'energia:msp430'
-              version: latest
-              source-url: 'http://energia.nu/packages/package_energia_index.json'
-    ```
+      - To compile a non-AVR platform (e.g. MSP430), then the workflow needs to include instructions to install additional platforms. Note the lack of a dash (`-`) before `version:` and `source-url:`.
+
+        ```yaml
+        with:
+            fqbn: 'energia:msp430:MSP-EXP430G2553LP'
+            platforms: |
+              - name: 'energia:msp430'
+                version: latest
+                source-url: 'http://energia.nu/packages/package_energia_index.json'
+        ```
 
 ## How to update this README
 
@@ -147,6 +151,7 @@ The software and other files in this repository are released under what is commo
 [11]: https://github.com/marketplace/actions/markdownlint-cli
 [12]: https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md013
 [13]: https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint
+[14]: https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs
 [100]: https://choosealicense.com/licenses/mit/
 [101]: ./LICENSE.txt
 [200]: https://github.com/Andy4495/Template-Repo
