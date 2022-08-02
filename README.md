@@ -32,15 +32,13 @@ Under the root directory are the following sub-directories. Each of the empty su
   
   - `CheckMarkdownLinks.yml`: Checks for [broken links in Markdown files][7] in your repository. Also note that there is a badge related to the status of this check embedded at the top of this README file.
   - `mlc_config.json`: Configuration file used by `CheckMarkdownLinks.yml`. In particular, this file defines HTTP status codes 429 (Too Many Requests), 403 (Forbidden), and 200 (OK) as valid "alive" status codes when checking URLs. Both 429 and 403 are often returned by the automated link check for valid URLs, and by defining them as "Alive" codes, you can cut down on false failures when running the Check Markdown Links action.
-  - `build-dependent-repos.yml`: Triggers builds on repositories dependent on this repo. This would typically be used for libraries that are used by other repos. If there are no repos dependent on this one, then delete this file.
+  - `build-dependent-repos.yml`: Triggers builds on repositories dependent on this repo. This would typically be used for libraries that are used by other repos. The actual dependent repo needs to have a `workflow_dispatch` event trigger defined. If there are no repos dependent on this one, then delete this file.
   - `arduino-lint.yml`: Runs the [Arduino Lint action][9]. This action is most useful for libraries published to the [Arduino Library Manager][10], and is configured as such.
   - `markdownlint.yml`: Runs the [markdownlint-cli action][11]. It references the config file `markdownlintconfig.json`.
   - `markdownlintconfig.json`: Config file for the `markdownlint.yml` action. This version is configured to disable the check for [MD013: Line Length][12]. MD013 is disabled by default in the [markdownlint extension][13] for Visual Studio Code, so I disable it here to make it consistent with my VSCode environment.
-
-    **There are several `arduino-compile-sketches` examples included. Be sure to use only one `arduino-compile-sketches` file -- tailor one of these examples to your needs and delete the others.**  
-
-    - `arduino-compile-sketches.yml`: Compiles any sketches (files ending in `.ino`) in the repository using the default avr:uno platform and reports on whether the sketches compile successfuly or not. See the Arduino [blog][5] and the related [action][6] in the GitHub marketplace for more info.
-    - `arduino-compile-sketches-MSP.yml`: Same as `arduino-compile-sketches.yml` with some added complexity. It specifies an external library, defines a different platform (msp430) and platform index file, and supports a workflow_dispatch event that can be used to externally trigger a build (e.g. when a library it depends on changes).
+  - There are several `arduino-compile-sketches` examples included. These compile any sketches (files ending in `.ino`) in the repository and report on whether the sketches compile successfuly. See the Arduino [blog][5] and the related [action][6] in the GitHub marketplace for more info.**Be sure to use only one `arduino-compile-sketches` file. Tailor one of these examples to your needs and delete the others.**  
+    - `arduino-compile-sketches.yml`: This action file compiles the sketches using the default avr:uno platform.
+    - `arduino-compile-sketches-MSP.yml`: Same as `arduino-compile-sketches.yml` with some added complexity. It specifies an external library, and defines a different platform (msp430) and platform index file.
     - `arduino-compile-sketches-matrix-build-avr-msp.yml`: Uses a [matrix strategy][14] to trigger both avr and msp builds on the sketches in the repository.
     - Tips on updating the compile-sketches actions:
       - If the sketches are dependent on external libraries, then entries similar to the following need to be added to the workflow file under the `libraries:` definition:
