@@ -39,7 +39,9 @@ Under the root directory are the following sub-directories. Each of the empty su
   - There are several `arduino-compile-sketches` examples included. These compile any sketches (files ending in `.ino`) in the repository and report on whether the sketches compile successfuly. See the Arduino [blog][5] and the related [action][6] in the GitHub marketplace for more info.**Be sure to use only one `arduino-compile-sketches` file. Tailor one of these examples to your needs and delete the others.**  
     - `arduino-compile-sketches.yml`: This action file compiles the sketches using the default avr:uno platform.
     - `arduino-compile-sketches-MSP.yml`: Same as `arduino-compile-sketches.yml` with some added complexity. It specifies an external library, and defines a different platform (msp430) and platform index file.
-    - `arduino-compile-sketches-matrix-build-avr-msp.yml`: Uses a [matrix strategy][14] to trigger both avr and msp builds on the sketches in the repository.
+    - `arduino-compile-sketches-MSP432.yml`: Same as above, except builds for msp432 platform. Also includes java environment setup which is needed for msp432 builds.
+    - `arduino-compile-sketches-matrix-build-avr-msp.yml`: Uses a [matrix strategy][14] to trigger both avr and msp430 builds on the sketches in the repository.
+    - `arduino-compile-sketches-matrix-build-msp432.yml`: Same as above, and adds msp432 to the matrix strategy. Also includes java environment setup which is needed for msp432 builds.
     - Tips on updating the compile-sketches actions:
       - If the sketches are dependent on external libraries, then entries similar to the following need to be added to the workflow file under the `libraries:` definition:
 
