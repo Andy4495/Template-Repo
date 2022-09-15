@@ -28,7 +28,9 @@ Under the root directory are the following sub-directories. Each of the empty su
 - `extras`  
   Can be used to store other information relevant to the repo, such as documentation, hardware, or related tools information. This directory is optional and is ignored by the Arduino development IDE and tools.
 - `.github/workflows`  
-  Contains sample [GitHub workflow][8] action files. Update these for your specific needs:
+  Contains sample [GitHub workflow][8] action files. Update these for your specific needs.
+  
+  Note that these are also defined as [starter workflows][15] in my [`.github` repo][16] and will be offered when creating a new workflow from the GitHub web interface.
   
   - `CheckMarkdownLinks.yml`: Checks for [broken links in Markdown files][7] in your repository. Also note that there is a badge related to the status of this check embedded at the top of this README file.
   - `mlc_config.json`: Configuration file used by `CheckMarkdownLinks.yml`. In particular, this file defines HTTP status codes 429 (Too Many Requests), 403 (Forbidden), and 200 (OK) as valid "alive" status codes when checking URLs. Both 429 and 403 are often returned by the automated link check for valid URLs, and by defining them as "Alive" codes, you can cut down on false failures when running the Check Markdown Links action.
@@ -38,10 +40,9 @@ Under the root directory are the following sub-directories. Each of the empty su
   - `markdownlintconfig.json`: Config file for the `markdownlint.yml` action. This version is configured to disable the check for [MD013: Line Length][12]. MD013 is disabled by default in the [markdownlint extension][13] for Visual Studio Code, so I disable it here to make it consistent with my VSCode environment.
   - There are several `arduino-compile-sketches` examples included. These compile any sketches (files ending in `.ino`) in the repository and report on whether the sketches compile successfuly. See the Arduino [blog][5] and the related [action][6] in the GitHub marketplace for more info.**Be sure to use only one `arduino-compile-sketches` file. Tailor one of these examples to your needs and delete the others.**  
     - `arduino-compile-sketches.yml`: This action file compiles the sketches using the default avr:uno platform.
-    - `arduino-compile-sketches-MSP.yml`: Same as `arduino-compile-sketches.yml` with some added complexity. It specifies an external library, and defines a different platform (msp430) and platform index file.
-    - `arduino-compile-sketches-MSP432.yml`: Same as above, except builds for msp432 platform. Also includes java environment setup which is needed for msp432 builds.
-    - `arduino-compile-sketches-matrix-build-avr-msp.yml`: Uses a [matrix strategy][14] to trigger both avr and msp430 builds on the sketches in the repository.
-    - `arduino-compile-sketches-matrix-build-msp432.yml`: Same as above, and adds msp432 to the matrix strategy. Also includes java environment setup which is needed for msp432 builds.
+    - `arduino-compile-sketches-MSP.yml`: Compiles sketches for msp430 platform.
+    - `arduino-compile-sketches-MSP432.yml`: Compiles sketches for msp432r platform. Also includes java environment setup which is needed for msp432 builds.
+    - `arduino-compile-sketches-matrix-build.yml`: Uses a [matrix strategy][14] to trigger builds across multiple platforms.
     - Tips on updating the compile-sketches actions:
       - If the sketches are dependent on external libraries, then entries similar to the following need to be added to the workflow file under the `libraries:` definition:
 
@@ -152,6 +153,8 @@ The software and other files in this repository are released under what is commo
 [12]: https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md#md013
 [13]: https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint
 [14]: https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs
+[15]: https://docs.github.com/en/actions/using-workflows/creating-starter-workflows-for-your-organization
+[16]: https://github.com/Andy4495/.github
 [100]: https://choosealicense.com/licenses/mit/
 [101]: ./LICENSE.txt
 [//]: # ([200]: https://github.com/Andy4495/Template-Repo)

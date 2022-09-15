@@ -1,5 +1,8 @@
 # From: https://github.com/marketplace/actions/compile-arduino-sketches
 # Uses: https://github.com/arduino/compile-sketches
+
+# This workflow only compiles for AVR
+
 name: Arduino Compile Sketches
 
 on: 
@@ -24,7 +27,9 @@ jobs:
           enable-warnings-report: true
           libraries: |
             - source-path: ./
-            - source-url: https://github.com/Andy4495/SWI2C.git
+            # Add library dependencies here: 
+            # - source-url: https://github.com/<owner-name>/<repo-name>.git
+            # - name: name-of-library-registered-with-arduino-library-manager
       - name: Print the job summary
         if: ${{ inputs.message }}
         run: |

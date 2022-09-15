@@ -1,5 +1,5 @@
 # From: https://github.com/marketplace/actions/arduino-arduino-lint-action
-# Use this action for libraries published to the Arduino LIbrary Manager
+# Use this action for libraries published to the Arduino Library Manager
 name: Arduino Lint
 
 on:

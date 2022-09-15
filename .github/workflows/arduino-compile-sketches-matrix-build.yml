@@ -1,5 +1,9 @@
-# From: https://github.com/marketplace/actions/compile-arduino-sketches
-# Uses: https://github.com/arduino/compile-sketches
+# Adapted from: https://github.com/marketplace/actions/compile-arduino-sketches
+# 
+# To customize:
+#  - Select which platforms to build and edit the matrix section below
+#  - Add library dependencies as needed for this repo in the libraries section below
+#
 name: Arduino Compile Sketches
 
 on: 
@@ -20,15 +24,27 @@ jobs:
             fqbn: 'arduino:avr:uno'
             platform-name: 'arduino:avr'
             platform-sourceurl: 'https://downloads.arduino.cc/packages/package_index.json'
-          - arch: msp
+          - arch: msp-G2
             fqbn: 'energia:msp430:MSP-EXP430G2553LP'
+            platform-name: 'energia:msp430'
+            platform-sourceurl: 'https://raw.githubusercontent.com/Andy4495/TI_Platform_Cores_For_Arduino/main/json/package_energia_minimal_MSP_107_index.json'
+          - arch: msp-F5529
+            fqbn: 'energia:msp430:MSP-EXP430F5529LP'
             platform-name: 'energia:msp430'
             platform-sourceurl: 'https://raw.githubusercontent.com/Andy4495/TI_Platform_Cores_For_Arduino/main/json/package_energia_minimal_MSP_107_index.json'
           - arch: msp432
             fqbn: 'energia:msp432r:MSP-EXP432P401R'
             platform-name: 'energia:msp432r'
             platform-sourceurl: 'https://raw.githubusercontent.com/Andy4495/TI_Platform_Cores_For_Arduino/main/json/package_energia_minimal_MSP432r_index.json'
-
+          - arch: tivac
+            fqbn: 'energia:tivac:EK-TM4C123GXL'
+            platform-name: 'energia:tivac'
+            platform-sourceurl: 'https://raw.githubusercontent.com/Andy4495/TI_Platform_Cores_For_Arduino/main/json/package_energia_minimal_TM4C_104_alternate_index.json'
+          - arch: esp8266
+            fqbn: 'esp8266:esp8266:thing'
+            platform-name: 'esp8266:esp8266'
+            platform-sourceurl: 'http://arduino.esp8266.com/stable/package_esp8266com_index.json'
+ 
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@main
@@ -52,8 +68,11 @@ jobs:
           enable-warnings-report: true
           libraries: |
             - source-path: ./
-            - source-url: https://github.com/Andy4495/SWI2C.git
+            # Add library dependencies here: 
+            # - source-url: https://github.com/<owner-name>/<repo-name>.git
+            # - name: name-of-library-registered-with-arduino-library-manager
       - name: Print the job summary
         if: ${{ inputs.message }}
         run: |
           echo ${{ inputs.message }} >$GITHUB_STEP_SUMMARY
+
