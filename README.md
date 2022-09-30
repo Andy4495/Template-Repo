@@ -27,6 +27,8 @@ Under the root directory are the following sub-directories. Each of the empty su
   Contains example sketches for the library. Note that each example sketch needs to be in its own subfolder, with the subfolder having the same name as the sketch (without the `.ino` extension).
 - `extras`  
   Can be used to store other information relevant to the repo, such as documentation, hardware, or related tools information. This directory is optional and is ignored by the Arduino development IDE and tools.
+- `.github`
+  - `dependabot.yml`: Used to enable and configure [dependabot][17] checks and alerts. When used as-is, the file is configured to check the GitHub actions files.
 - `.github/workflows`  
   Contains sample [GitHub workflow][8] action files. Update these for your specific needs.
   
@@ -155,6 +157,7 @@ The software and other files in this repository are released under what is commo
 [14]: https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs
 [15]: https://docs.github.com/en/actions/using-workflows/creating-starter-workflows-for-your-organization
 [16]: https://github.com/Andy4495/.github
+[17]: https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
 [100]: https://choosealicense.com/licenses/mit/
 [101]: ./LICENSE.txt
 [//]: # ([200]: https://github.com/Andy4495/Template-Repo)
