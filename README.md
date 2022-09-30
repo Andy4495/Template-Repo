@@ -157,7 +157,7 @@ The software and other files in this repository are released under what is commo
 [14]: https://docs.github.com/en/actions/using-jobs/using-a-matrix-for-your-jobs
 [15]: https://docs.github.com/en/actions/using-workflows/creating-starter-workflows-for-your-organization
 [16]: https://github.com/Andy4495/.github
-[17]: https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
+[17]: https://docs.github.com/en/code-security/dependabot/working-with-dependabot/keeping-your-actions-up-to-date-with-dependabot
 [100]: https://choosealicense.com/licenses/mit/
 [101]: ./LICENSE.txt
 [//]: # ([200]: https://github.com/Andy4495/Template-Repo)
