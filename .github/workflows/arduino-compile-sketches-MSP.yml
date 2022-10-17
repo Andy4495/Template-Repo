@@ -18,7 +18,7 @@ jobs:
   compile-sketches: 
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@main
+      - uses: actions/checkout@v3
       - uses: arduino/compile-sketches@v1
         with:
           fqbn: 'energia:msp430:MSP-EXP430G2553LP'
