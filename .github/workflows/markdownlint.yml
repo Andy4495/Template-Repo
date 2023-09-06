@@ -14,16 +14,8 @@ on:
 
 jobs:
   markdownlint:
-    name: markdownlint
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: nosborn/github-action-markdown-cli@v3
-        with:
-          files: '*.md **/*.md'
-          config_file: ./.github/workflows/markdownlintconfig.json
-      - name: Print the job summary
-        if: ${{ inputs.message }}
-        run: |
-          echo ${{ inputs.message }} >$GITHUB_STEP_SUMMARY
+    name: call-markdownlint-workflow
+    uses: Andy4495/.github/.github/workflows/markdownlint.yml@main         
+    with:
+      message: ${{ inputs.message }}
             

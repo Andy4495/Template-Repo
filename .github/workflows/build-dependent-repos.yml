@@ -14,15 +14,16 @@ on:
 
 jobs:
   build-dependent-repos:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Trigger build on <repo-name>
-        run: |
-          curl -X POST https://api.github.com/repos/Andy4495/<repo-name>/actions/workflows/arduino-compile-sketches.yml/dispatches -H "Accept: application/vnd.github.v3+json" -H "Authorization: token ${{ secrets.FORCE_REBUILD }}" -d '{"ref":"main", "inputs":{"message":"Triggered by ${{ github.repository }} from ${{ github.workflow }} workflow run number ${{ github.run_number }}"}}'
-      - name: Print event to job summary 
-        run: | 
-          echo Event name: ${{ github.event_name }} >$GITHUB_STEP_SUMMARY
-      - name: Print workflow_dispatch message to job summary 
-        if: ${{ inputs.message }}
-        run: |
-          echo ${{ inputs.message }} >>$GITHUB_STEP_SUMMARY     
+    strategy:
+      matrix:
+        include:
+          - name: Trigger build on <Repo Name>
+            repo: <Repo name>
+
+    name: call-compile-sketches-workflow
+    uses: Andy4495/.github/.github/workflows/build-dependent-repos.yml@main
+    with:
+      message: ${{ inputs.message }}
+      repo-name: ${{ matrix.repo }}
+    secrets: inherit
+  
