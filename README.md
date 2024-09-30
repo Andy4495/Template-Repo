@@ -1,6 +1,6 @@
 # Template Repository
 
-[![Check Markdown Links](https://github.com/Andy4495/Template-Repo/actions/workflows/CheckMarkdownLinks.yml/badge.svg)](https://github.com/Andy4495/Template-Repo/actions/workflows/CheckMarkdownLinks.yml)
+[![Check Markdown Links](https://github.com/Andy4495/Template-Repo/actions/workflows/check-links.yml/badge.svg)](https://github.com/Andy4495/Template-Repo/actions/workflows/check-links.yml)
 
 This is a template repository. Use this as a starting point for new projects. To create a new repo on GitHub using this template, select "Template-Repo" from the Repository template menu in the New Repository page, or click on the "Use this template" button at the top of this page.
 
@@ -34,9 +34,8 @@ Under the root directory are the following sub-directories. Each of the empty su
   
   Note that these are also defined as [starter workflows][15] in my [`.github` repo][16] and will be offered when creating a new workflow from the GitHub web interface.
   
-  - `CheckMarkdownLinks.yml`: Checks for [broken links in Markdown files][7] in your repository. Also note that there is a badge related to the status of this check embedded at the top of this README file.
+  - `check-links.yml`: Checks for [broken links in Markdown files][7] in your repository. Also note that there is a badge related to the status of this check embedded at the top of this README file.
   - `create-release.yml`: Manually run with a `workflow_dispatch` trigger from the `Actions` screen. Creates a draft release using my preferred library title format along with GitHub-generated release notes. Since it is created as a draft, you still need to manually switch it to a published release after making any desired edits to the release notes.
-  - `mlc_config.json`: Configuration file used by `CheckMarkdownLinks.yml`. In particular, this file defines HTTP status codes 429 (Too Many Requests), 403 (Forbidden), and 200 (OK) as valid "alive" status codes when checking URLs. Both 429 and 403 are often returned by the automated link check for valid URLs, and by defining them as "Alive" codes, you can cut down on false failures when running the Check Markdown Links action.
   - `build-dependent-repos.yml`: Triggers builds on repositories dependent on this repo. This would typically be used for libraries that are used by other repos. The actual dependent repo needs to have a `workflow_dispatch` event trigger defined. If there are no repos dependent on this one, then delete this file.
   - `arduino-lint.yml`: Runs the [Arduino Lint action][9]. This action is most useful for libraries published to the [Arduino Library Manager][10], and is configured as such.
   - `markdownlint.yml`: Runs the [markdownlint-cli action][11]. It references the config file `markdownlintconfig.json`.
@@ -141,7 +140,7 @@ The software and other files in this repository are released under what is commo
 [3]: https://github.com/github/gitignore
 [5]: https://blog.arduino.cc/2021/04/09/test-your-arduino-projects-with-github-actions/
 [6]: https://github.com/marketplace/actions/compile-arduino-sketches
-[7]: https://github.com/marketplace/actions/markdown-link-check
+[7]: https://github.com/lycheeverse/lychee-action
 [8]: https://docs.github.com/en/actions/using-workflows
 [9]: https://github.com/marketplace/actions/arduino-arduino-lint-action
 [10]: https://github.com/arduino/library-registry/blob/main/FAQ.md#readme
